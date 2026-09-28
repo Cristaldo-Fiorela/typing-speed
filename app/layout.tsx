@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
 import Header from "@/components/layout/header";
+import Footer from "@/components/layout/footer";
 
 const sora = localFont({
     src: "../fonts/Sora-VariableFont_wght.ttf",
@@ -54,14 +55,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                     
                     <!-- Test Complete End -->
                 */}
+                <Footer />
             </body>
-            <footer className="attribution">
-                Challenge by{" "}
-                <a href="https://www.frontendmentor.io?ref=challenge">
-                    Frontend Mentor
-                </a>
-                . Coded by <a href="#">Your Name Here</a>.
-            </footer>
         </html>
     );
 }
