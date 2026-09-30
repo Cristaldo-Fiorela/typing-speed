@@ -2,8 +2,8 @@ import Image from "next/image";
 
 export default function Header() {
     return (
-        <header className="flex justify-center  w-full">
-            <div className="flex justify-between w-full sm:p-5">
+        <header className="flex justify-center w-full py-1.5 px-3 md:px-10">
+            <div className="flex justify-between w-full ">
                 <div className="flex items-center gap-2">
                     <Image
                         src="/icons/logo-small.svg"
