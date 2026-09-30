@@ -1,4 +1,4 @@
-const scoreBar = () => {
+const ScoreBar = () => {
     return (
         <div>
             <div>
@@ -26,4 +26,4 @@ const scoreBar = () => {
     );
 };
 
-export default scoreBar;
+export default ScoreBar;
