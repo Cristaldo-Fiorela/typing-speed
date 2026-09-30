@@ -1,5 +1,9 @@
-const squareButton = () => {
-    return <div>squareButton</div>;
+type SquareButtonProps = {
+    children: React.ReactNode;
 };
 
-export default squareButton;
+const SquareButton = ({ children }: SquareButtonProps) => {
+    return <button>{children}</button>;
+};
+
+export default SquareButton;
