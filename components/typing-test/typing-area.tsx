@@ -4,7 +4,7 @@ import { useOneSentence } from "@/hooks/use-fetch-data";
 
 const TypingArea = () => {
     useOneSentence("easy");
-    return <div>TypingArea</div>;
+    return <div id="typing-area">TypingArea</div>;
 };
 
 export default TypingArea;
