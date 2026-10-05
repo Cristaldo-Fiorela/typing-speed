@@ -1,9 +1,9 @@
 "use client";
 
-import { useOneParagraph } from "@/hooks/use-fetch-data";
+import { useOneSentence } from "@/hooks/use-fetch-data";
 
 const TypingArea = () => {
-    useOneParagraph();
+    useOneSentence("easy");
     return <div>TypingArea</div>;
 };
 

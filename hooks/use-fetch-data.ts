@@ -3,13 +3,14 @@
 import { useState } from "react";
 
 import data from "@/data/data.json";
+import { DifficultyLevel } from "@/types/types";
 
-const useOneParagraph = () => {
+const useOneSentence = (difficulty: DifficultyLevel) => {
   const [fetchedData, setFetchedData] = useState([data]);
   const [paragraph, setParagraph] = useState("");
 
   fetchedData.forEach(element => {
-    console.log(element);
+    console.log(element[difficulty]);
   });
 }
 
@@ -17,5 +18,5 @@ const useOneParagraph = () => {
 
 
 export {
-  useOneParagraph
+  useOneSentence
 }
