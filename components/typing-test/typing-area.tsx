@@ -3,8 +3,12 @@
 import { useOneSentence } from "@/hooks/use-fetch-data";
 
 const TypingArea = () => {
-    useOneSentence("easy");
-    return <div id="typing-area">TypingArea</div>;
+    const { sentence, getRandomSentence } = useOneSentence("easy");
+    return (
+        <div id="typing-area">
+            <p>{sentence?.text}</p>
+        </div>
+    );
 };
 
 export default TypingArea;

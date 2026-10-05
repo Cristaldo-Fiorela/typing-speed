@@ -1,26 +1,25 @@
-"use client";
+// "use client";
 
 import { useState } from "react";
 
 import data from "@/data/data.json";
-import { DifficultyLevel } from "@/types/types";
-
-const TYPING_AREA = document.getElementById("typing-area") as HTMLDivElement;
-
+import { DifficultyLevel, Sentence } from "@/types/types";
+import { getRandomItem } from "@/lib/utils";
 
 const useOneSentence = (difficulty: DifficultyLevel) => {
-  const [fetchedData, setFetchedData] = useState([data]);
-  const [paragraph, setParagraph] = useState("");
+  const [sentence, setSentence] = useState<Sentence | null>(() => getRandomItem(data[difficulty]));
 
+  const getRandomSentence = () => {
+    const randomSentence = getRandomItem(data[difficulty]);
+    setSentence(randomSentence);
+  }
 
-  fetchedData.forEach(element => {
-    console.log(element[difficulty]);
-  });
-
-  console.log(TYPING_AREA);
+  return {
+    sentence,
+    getRandomSentence,
+  };
 }
 
-
 export {
-  useOneSentence
+  useOneSentence,
 }
