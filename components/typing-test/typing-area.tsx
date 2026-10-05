@@ -6,7 +6,7 @@ const TypingArea = () => {
     const { sentence, getRandomSentence } = useOneSentence("easy");
     return (
         <div id="typing-area">
-            <p>{sentence?.text}</p>
+            <p>{sentence?.text ?? "Cargando oración..."}</p>
         </div>
     );
 };
