@@ -18,7 +18,7 @@ const TypingArea = () => {
     if (!itStart) {
         return (
             <div id="typing-area" className="relative flex-1 my-3">
-                <p className="select-none" aria-hidden="true">
+                <p className="select-none text-2xl" aria-hidden="true">
                     {PLACEHOLDER}
                 </p>
 
@@ -35,7 +35,7 @@ const TypingArea = () => {
             </div>
         );
     } else {
-        return <p>{sentence?.text}</p>;
+        return <p className="text-2xl">{sentence?.text}</p>;
     }
 };
 
