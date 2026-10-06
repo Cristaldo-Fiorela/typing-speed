@@ -3,7 +3,7 @@ import TypingArea from "@/components/typing-test/typing-area";
 
 export default function Home() {
     return (
-        <main>
+        <main className="flex flex-col flex-1">
             <ScoreBar />
             <TypingArea />
         </main>

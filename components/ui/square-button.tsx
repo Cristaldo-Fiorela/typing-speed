@@ -1,13 +1,17 @@
-type SquareButtonProps = {
+type SquareButtonProps = React.ComponentProps<"button"> & {
     children: React.ReactNode;
-    onClick?: () => void;
     fill?: boolean;
 };
 
-const SquareButton = ({ children, fill, ...props }: SquareButtonProps) => {
+const SquareButton = ({
+    children,
+    fill,
+    className,
+    ...props
+}: SquareButtonProps) => {
     return (
         <button
-            className={`text-neutral-50 border rounded py-1 px-2 transition-colors cursor-pointer text-sm ${fill ? "border-blue-600 hover:text-neutral-50 bg-blue-600" : "hover:border-blue-600 hover:text-blue-400"}`}
+            className={`text-neutral-50 border rounded py-1 px-2 transition-colors cursor-pointer text-sm ${fill ? "border-blue-600 bg-blue-600 hover:text-neutral-50 hover:bg-blue-400" : "hover:border-blue-600 hover:text-blue-400"} ${className ?? ""}`}
             {...props}
         >
             {children}
