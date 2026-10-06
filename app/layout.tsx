@@ -22,26 +22,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                 <Header />
                 {children}
                 {/* 
-                    Personal best: <!-- PB --> WPM
-
-                    WPM: <!-- WPM -->
-                    Accuracy: <!-- Accuracy -->
-                    Time: <!-- Time -->
-
-                    Difficulty:
-                    Easy
-                    Medium
-                    Hard
-
-                    Mode:
-                    Timed (60s)
-                    Passage
-
-                    <!-- Passage -->
-
-                    Start Typing Test
-                    Or click the text and start typing
-
                     <!-- Test Complete Start -->
 
                     Test Complete!
