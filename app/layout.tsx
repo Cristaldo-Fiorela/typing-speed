@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
     return (
         <html lang="en" className={`${sora.variable} h-full antialiased`}>
-            <body className="min-h-full flex flex-col bg-neutral-900 text-neutral-50">
+            <body className="min-h-full flex flex-col bg-neutral-800 text-neutral-50">
                 <div className="mx-auto flex w-full max-w-300 flex-1 flex-col px-4 md:px-8">
                     <Header />
                     {children}
