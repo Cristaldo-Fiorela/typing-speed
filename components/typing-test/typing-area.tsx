@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useOneSentence } from "@/hooks/use-fetch-data";
 import SquareButton from "../ui/square-button";
+import TypingTest from "./typing-test";
 
 const PLACEHOLDER = "Que sera sera. What will be, will be.".repeat(18);
 
@@ -15,7 +16,7 @@ const TypingArea = () => {
         getRandomSentence();
     };
 
-    if (!itStart) {
+    if (!itStart || !sentence) {
         return (
             <div id="typing-area" className="relative flex-1 my-3">
                 <p className="select-none text-2xl m-3" aria-hidden="true">
@@ -34,13 +35,7 @@ const TypingArea = () => {
                 </div>
             </div>
         );
-    } else {
-        return (
-            <div id="typing-area" className="flex-1 my-3">
-                <p className="text-2xl m-3">{sentence?.text}</p>
-            </div>
-        );
-    }
+    } else return <TypingTest key={sentence?.id} sentence={sentence} />;
 };
 
 export default TypingArea;
