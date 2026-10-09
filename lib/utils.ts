@@ -1,4 +1,3 @@
-
 /**
  * @param array array of items
  * @returns one (1) random item of the array

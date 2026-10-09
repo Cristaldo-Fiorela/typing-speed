@@ -47,6 +47,41 @@ function useTypingTest(sentence: Sentence | null) {
   };
 }
 
+function useCountdown(seconds: number) {
+  const [counter, setCounter] = useState(seconds);
+  const [isActive, setIsActive] = useState(false);
+
+  const isRunning = isActive && counter > 0;
+
+  useEffect(() => {
+    if (!isRunning) return;
+
+    const timeout = setTimeout(() => {
+      setCounter((c) => c - 1);
+    }, 1000);
+
+    return () => clearTimeout(timeout);
+  }, [isRunning, counter]);
+
+  const start = () => {
+    setCounter(seconds);
+    setIsActive(true);
+  };
+
+  const reset = () => {
+    setIsActive(false);
+    setCounter(seconds);
+  };
+
+  return {
+    counter,
+    isRunning,
+    start,
+    reset
+  };
+}
+
 export {
   useTypingTest,
+  useCountdown
 }
