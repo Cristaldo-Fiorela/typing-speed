@@ -10,4 +10,6 @@ export type Data = {
   easy: Sentence[];
 }
 
-export type DifficultyLevel = "easy" | "medium" | "hard";
+export const DIFFICULTY_LEVELS = ["easy", "medium", "hard"] as const;
+
+export type DifficultyLevel = typeof DIFFICULTY_LEVELS[number];
