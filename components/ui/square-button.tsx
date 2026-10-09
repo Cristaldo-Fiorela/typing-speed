@@ -1,7 +1,4 @@
-type SquareButtonProps = React.ComponentProps<"button"> & {
-    children: React.ReactNode;
-    fill?: boolean;
-};
+import { SquareButtonProps } from "@/types/component-types";
 
 const SquareButton = ({
     children,

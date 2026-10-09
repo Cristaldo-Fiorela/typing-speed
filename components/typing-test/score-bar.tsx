@@ -1,10 +1,7 @@
-import { DIFFICULTY_LEVELS, DifficultyLevel } from "@/types/types";
-import SquareButton from "../ui/square-button";
-import { Dispatch, SetStateAction } from "react";
+import { DIFFICULTY_LEVELS } from "@/types/types";
+import { ScoreBarProps } from "@/types/component-types";
 
-type ScoreBarProps = {
-    setDifficulty: Dispatch<SetStateAction<DifficultyLevel>>;
-};
+import SquareButton from "../ui/square-button";
 
 const ScoreBar = ({ setDifficulty }: ScoreBarProps) => {
     return (

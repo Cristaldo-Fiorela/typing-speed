@@ -2,13 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { useOneSentence } from "@/hooks/use-fetch-data";
+import { TypingAreaProps } from "@/types/component-types";
+
 import SquareButton from "../ui/square-button";
 import TypingTest from "./typing-test";
-import { DifficultyLevel } from "@/types/types";
-
-type TypingAreaProps = {
-    difficulty: DifficultyLevel;
-};
 
 const PLACEHOLDER = "Que sera sera. What will be, will be.".repeat(18);
 

@@ -1,9 +1,5 @@
 import { useTypingTest } from "@/hooks/use-typing-test";
-import { Sentence } from "@/types/types";
-
-type TypingTestProps = {
-    sentence: Sentence;
-};
+import { TypingTestProps } from "@/types/component-types";
 
 const TypingTest = ({ sentence }: TypingTestProps) => {
     const { typed, totalErrors } = useTypingTest(sentence);
