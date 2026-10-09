@@ -1,11 +1,9 @@
-import ScoreBar from "@/components/typing-test/score-bar";
-import TypingArea from "@/components/typing-test/typing-area";
+import TypingGame from "@/components/layout/typing-game";
 
 export default function Home() {
     return (
         <main className="flex flex-col flex-1">
-            <ScoreBar />
-            <TypingArea />
+            <TypingGame />
         </main>
     );
 }

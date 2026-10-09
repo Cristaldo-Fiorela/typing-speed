@@ -1,7 +1,12 @@
-import { DIFFICULTY_LEVELS } from "@/types/types";
+import { DIFFICULTY_LEVELS, DifficultyLevel } from "@/types/types";
 import SquareButton from "../ui/square-button";
+import { Dispatch, SetStateAction } from "react";
 
-const ScoreBar = () => {
+type ScoreBarProps = {
+    setDifficulty: Dispatch<SetStateAction<DifficultyLevel>>;
+};
+
+const ScoreBar = ({ setDifficulty }: ScoreBarProps) => {
     return (
         <div className="flex justify-between items-center border-b border-neutral-800 text-neutral-400 pb-3">
             <div className="divide-x divide-neutral-800 text-center flex">
@@ -26,6 +31,7 @@ const ScoreBar = () => {
                             id={level}
                             value={level}
                             className="capitalize"
+                            onClick={() => setDifficulty(level)}
                         >
                             {level}
                         </SquareButton>
