@@ -1,3 +1,4 @@
+import { DIFFICULTY_LEVELS } from "@/types/types";
 import SquareButton from "../ui/square-button";
 
 const ScoreBar = () => {
@@ -19,9 +20,16 @@ const ScoreBar = () => {
             <div className="grid grid-cols-2 divide-x divide-neutral-800 text-center">
                 <div className="col-span-1 flex gap-3">
                     <h2>Difficulty:</h2>
-                    <SquareButton>Easy</SquareButton>
-                    <SquareButton>Medium</SquareButton>
-                    <SquareButton>Hard</SquareButton>
+                    {DIFFICULTY_LEVELS.map((level) => (
+                        <SquareButton
+                            key={level}
+                            id={level}
+                            value={level}
+                            className="capitalize"
+                        >
+                            {level}
+                        </SquareButton>
+                    ))}
                 </div>
                 <div className="col-span-1 flex gap-3">
                     <h2>Mode:</h2>
