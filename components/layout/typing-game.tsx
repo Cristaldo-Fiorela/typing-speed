@@ -13,7 +13,7 @@ const TypingGame = () => {
 
     return (
         <>
-            <ScoreBar setDifficulty={setDifficulty} />
+            <ScoreBar difficulty={difficulty} setDifficulty={setDifficulty} />
             <TypingArea difficulty={difficulty} />
         </>
     );

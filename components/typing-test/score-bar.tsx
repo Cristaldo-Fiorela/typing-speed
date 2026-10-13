@@ -3,7 +3,7 @@ import { ScoreBarProps } from "@/types/component-types";
 
 import SquareButton from "../ui/square-button";
 
-const ScoreBar = ({ setDifficulty }: ScoreBarProps) => {
+const ScoreBar = ({ difficulty, setDifficulty }: ScoreBarProps) => {
     return (
         <div className="flex justify-between items-center border-b border-neutral-800 text-neutral-400 pb-3">
             <div className="divide-x divide-neutral-800 text-center flex">
@@ -27,7 +27,8 @@ const ScoreBar = ({ setDifficulty }: ScoreBarProps) => {
                             key={level}
                             id={level}
                             value={level}
-                            className="capitalize"
+                            className={"capitalize"}
+                            active={level === difficulty}
                             onClick={() => setDifficulty(level)}
                         >
                             {level}

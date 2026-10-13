@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction } from "react";
 import { DifficultyLevel, Sentence } from "./types";
 
 export type ScoreBarProps = {
+  difficulty: DifficultyLevel;
   setDifficulty: Dispatch<SetStateAction<DifficultyLevel>>;
 };
 
@@ -16,4 +17,5 @@ export type TypingTestProps = {
 export type SquareButtonProps = React.ComponentProps<"button"> & {
   children: React.ReactNode;
   fill?: boolean;
+  active?: boolean;
 };
