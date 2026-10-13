@@ -1,9 +1,14 @@
-import { DIFFICULTY_LEVELS } from "@/types/types";
+import { DIFFICULTY_LEVELS, MODE_TYPE } from "@/types/types";
 import { ScoreBarProps } from "@/types/component-types";
 
 import SquareButton from "../ui/square-button";
 
-const ScoreBar = ({ difficulty, setDifficulty }: ScoreBarProps) => {
+const ScoreBar = ({
+    difficulty,
+    setDifficulty,
+    mode,
+    setMode,
+}: ScoreBarProps) => {
     return (
         <div className="flex justify-between items-center border-b border-neutral-800 text-neutral-400 pb-3">
             <div className="divide-x divide-neutral-800 text-center flex">
@@ -37,8 +42,18 @@ const ScoreBar = ({ difficulty, setDifficulty }: ScoreBarProps) => {
                 </div>
                 <div className="flex gap-3 px-3">
                     <h2>Mode:</h2>
-                    <SquareButton>Timed (60s)</SquareButton>
-                    <SquareButton>Passage</SquareButton>
+                    {MODE_TYPE.map((m) => (
+                        <SquareButton
+                            key={m}
+                            id={m}
+                            value={m}
+                            className="capitalize"
+                            active={m === mode}
+                            onClick={() => setMode(m)}
+                        >
+                            {m}
+                        </SquareButton>
+                    ))}
                 </div>
             </div>
         </div>

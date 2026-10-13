@@ -14,6 +14,6 @@ export const DIFFICULTY_LEVELS = ["easy", "medium", "hard"] as const;
 
 export type DifficultyLevel = typeof DIFFICULTY_LEVELS[number];
 
-export const MODE_TYPE = ["timed", "passage"] as const;
+export const MODE_TYPE = ["timed (60s)", "passage"] as const;
 
 export type ModeType = typeof MODE_TYPE[number];
