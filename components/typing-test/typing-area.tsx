@@ -9,13 +9,14 @@ import TypingTest from "./typing-test";
 
 const PLACEHOLDER = "Que sera sera. What will be, will be.".repeat(18);
 
-const TypingArea = ({ difficulty }: TypingAreaProps) => {
+const TypingArea = ({ difficulty, start }: TypingAreaProps) => {
     const [itStart, setItStart] = useState(false);
     const { sentence, getRandomSentence } = useOneSentence(difficulty);
 
     const handleStart = () => {
         setItStart(true);
         getRandomSentence();
+        start();
     };
 
     useEffect(() => {

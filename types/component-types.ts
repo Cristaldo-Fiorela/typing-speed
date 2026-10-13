@@ -6,10 +6,12 @@ export type ScoreBarProps = {
   setDifficulty: Dispatch<SetStateAction<DifficultyLevel>>;
   mode: ModeType;
   setMode: Dispatch<SetStateAction<ModeType>>;
+  counter: number;
 };
 
 export type TypingAreaProps = {
   difficulty: DifficultyLevel;
+  start: () => void;
 };
 
 export type TypingTestProps = {

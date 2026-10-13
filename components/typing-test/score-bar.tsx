@@ -3,11 +3,14 @@ import { ScoreBarProps } from "@/types/component-types";
 
 import SquareButton from "../ui/square-button";
 
+// TODO hola
+
 const ScoreBar = ({
     difficulty,
     setDifficulty,
     mode,
     setMode,
+    counter,
 }: ScoreBarProps) => {
     return (
         <div className="flex justify-between items-center border-b border-neutral-800 text-neutral-400 pb-3">
@@ -21,7 +24,9 @@ const ScoreBar = ({
                 </h2>
                 <h2 className="px-3">
                     Time:{" "}
-                    <span className="text-neutral-50 font-bold">0:60</span>
+                    <span className="text-neutral-50 font-bold">
+                        0:{counter}
+                    </span>
                 </h2>
             </div>
             <div className="divide-x divide-neutral-800 text-center flex">

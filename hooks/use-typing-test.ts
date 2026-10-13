@@ -81,6 +81,12 @@ function useCountdown(seconds: number) {
   };
 }
 
+// function useStadistics(tiped: string, error: number, time: number) {
+//   const [WPM, setWPM] = useState();
+//   const [accuracy, setAccuracy] = useState();
+
+// }
+
 export {
   useTypingTest,
   useCountdown
