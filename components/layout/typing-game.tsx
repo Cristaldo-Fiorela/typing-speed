@@ -12,7 +12,8 @@ const TypingGame = () => {
     const [difficulty, setDifficulty] = useState<DifficultyLevel>("medium");
     const [mode, setMode] = useState<ModeType>("timed (60s)");
 
-    const { counter, isRunning, start, reset } = useCountdown(6);
+    const { counter, FORMATED_COUNTER, isRunning, start, reset } =
+        useCountdown(6);
     const { sentence, getRandomSentence } = useOneSentence(difficulty);
 
     const handleStart = () => {
@@ -31,7 +32,7 @@ const TypingGame = () => {
                 setDifficulty={setDifficulty}
                 mode={mode}
                 setMode={setMode}
-                counter={counter}
+                formatedCounter={FORMATED_COUNTER}
             />
             <TypingArea
                 sentence={sentence}

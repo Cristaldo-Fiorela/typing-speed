@@ -8,7 +8,7 @@ const ScoreBar = ({
     setDifficulty,
     mode,
     setMode,
-    counter,
+    formatedCounter,
 }: ScoreBarProps) => {
     return (
         <div className="flex justify-between items-center border-b border-neutral-800 text-neutral-400 pb-3">
@@ -23,7 +23,7 @@ const ScoreBar = ({
                 <h2 className="px-3">
                     Time:{" "}
                     <span className="text-neutral-50 font-bold">
-                        0:{counter}
+                        0:{formatedCounter}
                     </span>
                 </h2>
             </div>
