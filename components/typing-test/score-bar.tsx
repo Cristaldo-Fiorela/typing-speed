@@ -9,16 +9,21 @@ const ScoreBar = ({
     formatedCounter,
     handleDifficultyChange,
     handleModeChange,
+    accuracy,
+    WPM,
 }: ScoreBarProps) => {
     return (
         <div className="flex justify-between items-center border-b border-neutral-800 text-neutral-400 pb-3">
             <div className="divide-x divide-neutral-800 text-center flex">
                 <h2 className="px-3">
-                    WPM: <span className="text-neutral-50 font-bold">0</span>
+                    WPM:{" "}
+                    <span className="text-neutral-50 font-bold">{WPM}</span>
                 </h2>
                 <h2 className="px-3">
                     Accuracy:{" "}
-                    <span className="text-neutral-50 font-bold">100%</span>
+                    <span className="text-neutral-50 font-bold">
+                        {!accuracy ? "0" : accuracy}%
+                    </span>
                 </h2>
                 <h2 className="px-3">
                     Time:{" "}

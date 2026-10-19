@@ -70,6 +70,8 @@ const TypingGame = () => {
                 handleModeChange={handleModeChange}
                 formatedCounter={FORMATED_COUNTER}
                 handleDifficultyChange={handleDifficultyChange}
+                WPM={WPM}
+                accuracy={ACCURACY}
             />
             <TypingArea
                 sentence={sentence}

@@ -6,6 +6,8 @@ export type ScoreBarProps = {
   formatedCounter: string;
   handleDifficultyChange: (level: DifficultyLevel) => void;
   handleModeChange: (mode: ModeType) => void;
+  WPM: number;
+  accuracy: number;
 };
 
 export type TypingAreaProps = {
