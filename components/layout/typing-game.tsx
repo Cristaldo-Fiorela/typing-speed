@@ -21,7 +21,10 @@ const TypingGame = () => {
     const { counter, FORMATED_COUNTER, isRunning, start, reset } =
         useCountdown(COUNTER_TIME);
     const { sentence, getRandomSentence } = useOneSentence(difficulty);
-    const { typed, totalCharTyped, totalErrors } = useTypingTest(sentence);
+    const { typed, totalCharTyped, totalErrors } = useTypingTest(
+        sentence,
+        isRunning,
+    );
     const { WPM, ACCURACY } = useStadistics(
         typed,
         totalCharTyped,
@@ -43,6 +46,8 @@ const TypingGame = () => {
             console.log("WPM", WPM);
             console.log("accuracy", ACCURACY);
         }
+
+        console.log(typed);
     }, [typed]);
 
     return (

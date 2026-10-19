@@ -10,12 +10,20 @@ import { useEffect, useState } from "react";
 // TODO: recopilar en una variable lo tipeado, los errores, comparar con el texto original, si la keyboard seleccionada es para borrar se tiene que borrar una index del string.
 // TODO: hay que resetear en cada vuelta el typed
 
-function useTypingTest(sentence: Sentence | null) {
+function useTypingTest(sentence: Sentence | null, isRunning: boolean) {
   const [typed, setTyped] = useState("");
   const [totalErrors, setTotalErrors] = useState(0);
   const [totalCharTyped, setTotalCharTyped] = useState(0);
 
+  const reset = () => {
+    setTyped("");
+    setTotalErrors(0);
+    setTotalCharTyped(0);
+  };
+
   useEffect(() => {
+    if (!isRunning) return
+
     // Se agrega funcion para trabajar sobre el mismo objeto en memoria y poder resetearlo en cada vuelta del useEffect
     const handleKeyDown = (e: KeyboardEvent) => {
       // BORRAR
@@ -34,20 +42,20 @@ function useTypingTest(sentence: Sentence | null) {
         setTyped((prev) => prev + e.key);
         setTotalCharTyped((prev) => prev + 1);
       }
-
-
     }
 
     window.addEventListener("keydown", handleKeyDown);
 
     // reset
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [typed, sentence])
+  }, [typed, sentence, isRunning])
+
 
   return {
     typed,
     totalErrors,
     totalCharTyped,
+    reset
   };
 }
 
