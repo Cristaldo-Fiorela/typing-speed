@@ -80,7 +80,7 @@ function useCountdown(seconds: number) {
     setIsActive(true);
   };
 
-  const reset = () => {
+  const resetCounter = () => {
     setIsActive(false);
     setCounter(seconds);
   };
@@ -92,7 +92,7 @@ function useCountdown(seconds: number) {
     FORMATED_COUNTER,
     isRunning,
     start,
-    reset
+    resetCounter
   };
 }
 

@@ -18,10 +18,10 @@ const TypingGame = () => {
     const [difficulty, setDifficulty] = useState<DifficultyLevel>("medium");
     const [mode, setMode] = useState<ModeType>("timed (60s)");
 
-    const { counter, FORMATED_COUNTER, isRunning, start, reset } =
+    const { counter, FORMATED_COUNTER, isRunning, start, resetCounter } =
         useCountdown(COUNTER_TIME);
     const { sentence, getRandomSentence } = useOneSentence(difficulty);
-    const { typed, totalCharTyped, totalErrors } = useTypingTest(
+    const { typed, totalCharTyped, totalErrors, reset } = useTypingTest(
         sentence,
         isRunning,
     );
