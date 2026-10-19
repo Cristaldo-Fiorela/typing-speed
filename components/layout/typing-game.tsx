@@ -33,10 +33,22 @@ const TypingGame = () => {
     );
 
     const handleStart = () => {
+        reset();
         getRandomSentence();
         start();
     };
 
+    const handleDifficultyChange = (level: DifficultyLevel) => {
+        if (!isRunning) {
+            setDifficulty(level);
+        }
+    };
+
+    const handleModeChange = (mode: ModeType) => {
+        if (!isRunning) {
+            setMode(mode);
+        }
+    };
     useEffect(() => {
         getRandomSentence();
     }, [difficulty]);
@@ -54,10 +66,10 @@ const TypingGame = () => {
         <>
             <ScoreBar
                 difficulty={difficulty}
-                setDifficulty={setDifficulty}
                 mode={mode}
-                setMode={setMode}
+                handleModeChange={handleModeChange}
                 formatedCounter={FORMATED_COUNTER}
+                handleDifficultyChange={handleDifficultyChange}
             />
             <TypingArea
                 sentence={sentence}

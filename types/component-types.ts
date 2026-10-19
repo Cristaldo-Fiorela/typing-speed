@@ -1,12 +1,11 @@
-import { Dispatch, SetStateAction } from "react";
 import { DifficultyLevel, ModeType, Sentence } from "./types";
 
 export type ScoreBarProps = {
   difficulty: DifficultyLevel;
-  setDifficulty: Dispatch<SetStateAction<DifficultyLevel>>;
   mode: ModeType;
-  setMode: Dispatch<SetStateAction<ModeType>>;
   formatedCounter: string;
+  handleDifficultyChange: (level: DifficultyLevel) => void;
+  handleModeChange: (mode: ModeType) => void;
 };
 
 export type TypingAreaProps = {

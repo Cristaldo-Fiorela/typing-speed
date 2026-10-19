@@ -5,10 +5,10 @@ import SquareButton from "../ui/square-button";
 
 const ScoreBar = ({
     difficulty,
-    setDifficulty,
     mode,
-    setMode,
     formatedCounter,
+    handleDifficultyChange,
+    handleModeChange,
 }: ScoreBarProps) => {
     return (
         <div className="flex justify-between items-center border-b border-neutral-800 text-neutral-400 pb-3">
@@ -37,7 +37,7 @@ const ScoreBar = ({
                             value={level}
                             className={"capitalize"}
                             active={level === difficulty}
-                            onClick={() => setDifficulty(level)}
+                            onClick={() => handleDifficultyChange(level)}
                         >
                             {level}
                         </SquareButton>
@@ -52,7 +52,7 @@ const ScoreBar = ({
                             value={m}
                             className="capitalize"
                             active={m === mode}
-                            onClick={() => setMode(m)}
+                            onClick={() => handleModeChange(m)}
                         >
                             {m}
                         </SquareButton>
