@@ -74,8 +74,11 @@ function useCountdown(seconds: number) {
     setCounter(seconds);
   };
 
+  const FORMATED_COUNTER = String(counter).padStart(2, "0");
+
   return {
     counter,
+    FORMATED_COUNTER,
     isRunning,
     start,
     reset
