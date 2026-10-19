@@ -4,6 +4,7 @@ import { TypingTestProps } from "@/types/component-types";
 const TypingTest = ({ sentence }: TypingTestProps) => {
     const { typed, totalErrors } = useTypingTest(sentence);
 
+    // FIXME:  borrar typed
     console.log(typed);
     console.log("ERRORS", totalErrors);
 

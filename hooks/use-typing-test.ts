@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 function useTypingTest(sentence: Sentence | null) {
   const [typed, setTyped] = useState("");
   const [totalErrors, setTotalErrors] = useState(0);
+  const [totalCharTyped, setTotalCharTyped] = useState(0);
 
   useEffect(() => {
     // Se agrega funcion para trabajar sobre el mismo objeto en memoria y poder resetearlo en cada vuelta del useEffect
@@ -31,6 +32,7 @@ function useTypingTest(sentence: Sentence | null) {
           setTotalErrors(prev => prev + 1);
         }
         setTyped((prev) => prev + e.key);
+        setTotalCharTyped((prev) => prev + 1);
       }
 
 
@@ -45,6 +47,7 @@ function useTypingTest(sentence: Sentence | null) {
   return {
     typed,
     totalErrors,
+    totalCharTyped,
   };
 }
 
