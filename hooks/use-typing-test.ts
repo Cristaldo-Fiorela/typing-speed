@@ -88,28 +88,19 @@ function useCountdown(seconds: number) {
   };
 }
 
-// function useStadistics(tiped: string, error: number, time: number) {
-//   const [WPM, setWPM] = useState<number>(0);
-//   const [accuracy, setAccuracy] = useState(0);
+function useStadistics(typed: string, totalTyped: number, error: number, time: number) {
+  const GROSS_WPM = getGrossWPM(typed.length, time);
+  const WPM = getNetWPM(GROSS_WPM, error, time);
+  const ACCURACY = getAccuracy(totalTyped, typed.length);
 
-//   useEffect(() => {
-//     const GROSS_WPM = getGrossWPM(tiped.length, time);
-//     const NET_WPM = getNetWPM(GROSS_WPM, error, time);
-
-
-//     setWPM(NET_WPM)
-
-//   }, [tiped])
-
-
-//   return {
-//     WPM,
-//     accuracy
-//   }
-
-// }
+  return {
+    WPM,
+    accuracy: ACCURACY
+  }
+}
 
 export {
   useTypingTest,
-  useCountdown
+  useCountdown,
+  useStadistics
 }
