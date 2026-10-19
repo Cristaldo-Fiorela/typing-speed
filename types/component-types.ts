@@ -10,8 +10,9 @@ export type ScoreBarProps = {
 };
 
 export type TypingAreaProps = {
-  difficulty: DifficultyLevel;
-  start: () => void;
+  isRunning: boolean;
+  sentence: Sentence | null;
+  handleStart: () => void;
 };
 
 export type TypingTestProps = {

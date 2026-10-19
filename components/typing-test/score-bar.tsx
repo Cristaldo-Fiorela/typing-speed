@@ -3,8 +3,6 @@ import { ScoreBarProps } from "@/types/component-types";
 
 import SquareButton from "../ui/square-button";
 
-// TODO hola
-
 const ScoreBar = ({
     difficulty,
     setDifficulty,

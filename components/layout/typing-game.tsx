@@ -1,17 +1,28 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DifficultyLevel, ModeType } from "@/types/types";
 
 import ScoreBar from "../typing-test/score-bar";
 import TypingArea from "../typing-test/typing-area";
 import { useCountdown } from "@/hooks/use-typing-test";
+import { useOneSentence } from "@/hooks/use-fetch-data";
 
 const TypingGame = () => {
     const [difficulty, setDifficulty] = useState<DifficultyLevel>("medium");
     const [mode, setMode] = useState<ModeType>("timed (60s)");
 
     const { counter, isRunning, start, reset } = useCountdown(6);
+    const { sentence, getRandomSentence } = useOneSentence(difficulty);
+
+    const handleStart = () => {
+        getRandomSentence();
+        start();
+    };
+
+    useEffect(() => {
+        getRandomSentence();
+    }, [difficulty]);
 
     return (
         <>
@@ -22,7 +33,11 @@ const TypingGame = () => {
                 setMode={setMode}
                 counter={counter}
             />
-            <TypingArea difficulty={difficulty} start={start} />
+            <TypingArea
+                sentence={sentence}
+                isRunning={isRunning}
+                handleStart={handleStart}
+            />
         </>
     );
 };

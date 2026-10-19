@@ -1,5 +1,6 @@
 "use client"
 
+import { getAccuracy, getGrossWPM, getNetWPM } from "@/lib/utils";
 import { Sentence } from "@/types/types";
 import { useEffect, useState } from "react";
 
@@ -82,8 +83,23 @@ function useCountdown(seconds: number) {
 }
 
 // function useStadistics(tiped: string, error: number, time: number) {
-//   const [WPM, setWPM] = useState();
-//   const [accuracy, setAccuracy] = useState();
+//   const [WPM, setWPM] = useState<number>(0);
+//   const [accuracy, setAccuracy] = useState(0);
+
+//   useEffect(() => {
+//     const GROSS_WPM = getGrossWPM(tiped.length, time);
+//     const NET_WPM = getNetWPM(GROSS_WPM, error, time);
+
+
+//     setWPM(NET_WPM)
+
+//   }, [tiped])
+
+
+//   return {
+//     WPM,
+//     accuracy
+//   }
 
 // }
 
