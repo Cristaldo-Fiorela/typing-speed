@@ -38,15 +38,15 @@ function getNetWPM(gross_wpm: number, total_errors: number, time: number): numbe
 }
 
 
-// FIXME: DA SIEMPRE 100%. REVISAR
 /**
  * 
- * @param correct_char typed char without mistakes
- * @param total_char typed char with mistakes
+ * @param total_errors errors
+ * @param total_char typed char
  * @returns accuracy
  */
-function getAccuracy(correct_char: number, total_char: number): number {
-  return (correct_char / total_char) * 100;
+function getAccuracy(total_errors: number, total_char: number): number {
+  if (total_char <= 0) return 100;
+  return Math.round(((total_char - total_errors) / total_char) * 100);
 }
 
 export {

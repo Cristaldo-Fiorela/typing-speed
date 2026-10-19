@@ -99,7 +99,7 @@ function useCountdown(seconds: number) {
 function useStadistics(typed: string, totalTyped: number, error: number, time: number) {
   const GROSS_WPM = getGrossWPM(typed.length, time);
   const WPM = getNetWPM(GROSS_WPM, error, time);
-  const ACCURACY = getAccuracy(typed.length, totalTyped);
+  const ACCURACY = getAccuracy(error, typed.length);
 
   return {
     WPM,
