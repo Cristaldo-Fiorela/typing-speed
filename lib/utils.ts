@@ -13,24 +13,32 @@ function getRandomItem<T>(array: T[]): T {
 /**
  * 
  * @param total_char total typed char without mistakes
- * @param time total time counter
+ * @param time total SECONDS time counter
  * @returns grooss WPM
  */
 function getGrossWPM(total_char: number, time: number): number {
-  return (total_char / 5) / time;
+  if (time <= 0) return 0;
+
+  return (total_char / 5) * (60 / time);
 }
 
 /**
  * 
  * @param gross_wpm gross wpm
  * @param total_errors total mistakes
- * @param time total time
+ * @param time total SECONDS time
  * @returns net WPM
  */
 function getNetWPM(gross_wpm: number, total_errors: number, time: number): number {
-  return gross_wpm - (total_errors / time);
+  if (time <= 0) return 0;
+
+  const errorsPerMinute = total_errors * (60 / time);
+
+  return Math.max(0, gross_wpm - errorsPerMinute);
 }
 
+
+// FIXME: DA SIEMPRE 100%. REVISAR
 /**
  * 
  * @param correct_char typed char without mistakes

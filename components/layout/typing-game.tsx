@@ -5,16 +5,29 @@ import { DifficultyLevel, ModeType } from "@/types/types";
 
 import ScoreBar from "../typing-test/score-bar";
 import TypingArea from "../typing-test/typing-area";
-import { useCountdown } from "@/hooks/use-typing-test";
+import {
+    useCountdown,
+    useStadistics,
+    useTypingTest,
+} from "@/hooks/use-typing-test";
 import { useOneSentence } from "@/hooks/use-fetch-data";
+
+const COUNTER_TIME: number = 6;
 
 const TypingGame = () => {
     const [difficulty, setDifficulty] = useState<DifficultyLevel>("medium");
     const [mode, setMode] = useState<ModeType>("timed (60s)");
 
     const { counter, FORMATED_COUNTER, isRunning, start, reset } =
-        useCountdown(6);
+        useCountdown(COUNTER_TIME);
     const { sentence, getRandomSentence } = useOneSentence(difficulty);
+    const { typed, totalCharTyped, totalErrors } = useTypingTest(sentence);
+    const { WPM, ACCURACY } = useStadistics(
+        typed,
+        totalCharTyped,
+        totalErrors,
+        COUNTER_TIME,
+    );
 
     const handleStart = () => {
         getRandomSentence();
@@ -24,6 +37,13 @@ const TypingGame = () => {
     useEffect(() => {
         getRandomSentence();
     }, [difficulty]);
+
+    useEffect(() => {
+        if (isRunning) {
+            console.log("WPM", WPM);
+            console.log("accuracy", ACCURACY);
+        }
+    }, [typed]);
 
     return (
         <>
