@@ -45,13 +45,19 @@ function getNetWPM(gross_wpm: number, total_errors: number, time: number): numbe
  * @returns accuracy
  */
 function getAccuracy(total_errors: number, total_char: number): number {
-  if (total_char <= 0) return 100;
-  return Math.round(((total_char - total_errors) / total_char) * 100);
+  const totalTyped = total_char + total_errors;
+  if (totalTyped <= 0) return 100;
+  return (total_char / totalTyped) * 100;
+}
+
+function formatWPM(wpm: number): number {
+  return Math.round(wpm);
 }
 
 export {
   getRandomItem,
   getGrossWPM,
   getNetWPM,
-  getAccuracy
+  getAccuracy,
+  formatWPM,
 }

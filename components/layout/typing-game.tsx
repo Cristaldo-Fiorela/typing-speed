@@ -12,7 +12,7 @@ import {
 } from "@/hooks/use-typing-test";
 import { useOneSentence } from "@/hooks/use-fetch-data";
 
-const COUNTER_TIME: number = 6;
+const COUNTER_TIME: number = 20;
 
 const TypingGame = () => {
     const [difficulty, setDifficulty] = useState<DifficultyLevel>("medium");
@@ -21,15 +21,16 @@ const TypingGame = () => {
     const { counter, FORMATED_COUNTER, isRunning, start, resetCounter } =
         useCountdown(COUNTER_TIME);
     const { sentence, getRandomSentence } = useOneSentence(difficulty);
-    const { typed, totalCharTyped, totalErrors, reset } = useTypingTest(
+    const { typed, totalErrors, reset, totalTypedWithErrors } = useTypingTest(
         sentence,
         isRunning,
     );
     const { WPM, ACCURACY } = useStadistics(
         typed,
-        totalCharTyped,
+        totalTypedWithErrors,
         totalErrors,
         COUNTER_TIME,
+        sentence?.text ?? "",
     );
 
     const handleStart = () => {

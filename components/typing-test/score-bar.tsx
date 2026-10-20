@@ -22,7 +22,7 @@ const ScoreBar = ({
                 <h2 className="px-3">
                     Accuracy:{" "}
                     <span className="text-neutral-50 font-bold">
-                        {!accuracy ? "0" : accuracy}%
+                        {!accuracy ? "0" : String(accuracy.toFixed(2))}%
                     </span>
                 </h2>
                 <h2 className="px-3">

@@ -1,6 +1,6 @@
 "use client"
 
-import { getAccuracy, getGrossWPM, getNetWPM } from "@/lib/utils";
+import { formatWPM, getAccuracy, getGrossWPM, getNetWPM } from "@/lib/utils";
 import { Sentence } from "@/types/types";
 import { useEffect, useState } from "react";
 
@@ -13,12 +13,12 @@ import { useEffect, useState } from "react";
 function useTypingTest(sentence: Sentence | null, isRunning: boolean) {
   const [typed, setTyped] = useState("");
   const [totalErrors, setTotalErrors] = useState(0);
-  const [totalCharTyped, setTotalCharTyped] = useState(0);
+  const [totalTypedWithErrors, setTotalTypedWithErrors] = useState(0);
 
   const reset = () => {
     setTyped("");
     setTotalErrors(0);
-    setTotalCharTyped(0);
+    setTotalTypedWithErrors(0);
   };
 
   useEffect(() => {
@@ -35,12 +35,13 @@ function useTypingTest(sentence: Sentence | null, isRunning: boolean) {
       if (e.key.length === 1) {
         if (e.key === " ") e.preventDefault(); // el espacio puede ocacionar que si la pag tiene scroll, se deslice.
 
+        setTotalTypedWithErrors((prev) => prev + 1);
+
         // COMPARAR y GUARDAR
         if (e.key !== sentence?.text[typed.length]) {
           setTotalErrors(prev => prev + 1);
         }
         setTyped((prev) => prev + e.key);
-        setTotalCharTyped((prev) => prev + 1);
       }
     }
 
@@ -54,7 +55,7 @@ function useTypingTest(sentence: Sentence | null, isRunning: boolean) {
   return {
     typed,
     totalErrors,
-    totalCharTyped,
+    totalTypedWithErrors,
     reset
   };
 }
@@ -96,14 +97,17 @@ function useCountdown(seconds: number) {
   };
 }
 
-function useStadistics(typed: string, totalTyped: number, error: number, time: number) {
+function useStadistics(typed: string, totalTypedWithErrors: number, error: number, time: number, sentence: string) {
+  // errors on screen
+  const uncorrectedErrors = [...typed].filter((c, i) => c !== sentence[i]).length;
+
   const GROSS_WPM = getGrossWPM(typed.length, time);
-  const WPM = getNetWPM(GROSS_WPM, error, time);
-  const ACCURACY = getAccuracy(error, typed.length);
+  const WPM = getNetWPM(GROSS_WPM, uncorrectedErrors, time);
+  const ACCURACY = getAccuracy(error, totalTypedWithErrors);
 
   return {
-    WPM,
-    ACCURACY
+    WPM: formatWPM(WPM),
+    ACCURACY,
   }
 }
 
