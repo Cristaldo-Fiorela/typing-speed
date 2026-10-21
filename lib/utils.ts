@@ -1,3 +1,5 @@
+import { CharStatus } from "@/types/types";
+
 /**
  * @param array array of items
  * @returns one (1) random item of the array
@@ -54,10 +56,27 @@ function formatWPM(wpm: number): number {
   return Math.round(wpm);
 }
 
+/**
+ * 
+ * @param idx index of current char
+ * @param typed what the user typed
+ * @param sentence text of the sentence
+ */
+function getCharStatus(idx: number, typed: string, sentence: string): CharStatus {
+  if (idx < typed.length) {
+    return typed[idx] === sentence[idx] ? "correct" : "incorrect";
+  }
+
+  if (idx === typed.length) return "current";
+
+  return "pending";
+}
+
 export {
   getRandomItem,
   getGrossWPM,
   getNetWPM,
   getAccuracy,
   formatWPM,
+  getCharStatus
 }
