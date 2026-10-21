@@ -5,7 +5,12 @@ import TypingTest from "./typing-test";
 
 const PLACEHOLDER = "Que sera sera. What will be, will be.".repeat(18);
 
-const TypingArea = ({ isRunning, sentence, handleStart }: TypingAreaProps) => {
+const TypingArea = ({
+    isRunning,
+    sentence,
+    handleStart,
+    typed,
+}: TypingAreaProps) => {
     if (!isRunning || !sentence) {
         return (
             <div id="typing-area" className="relative flex-1 my-3">
@@ -25,7 +30,10 @@ const TypingArea = ({ isRunning, sentence, handleStart }: TypingAreaProps) => {
                 </div>
             </div>
         );
-    } else return <TypingTest key={sentence?.id} sentence={sentence} />;
+    } else
+        return (
+            <TypingTest key={sentence?.id} sentence={sentence} typed={typed} />
+        );
 };
 
 export default TypingArea;

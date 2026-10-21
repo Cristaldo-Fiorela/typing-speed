@@ -11,6 +11,7 @@ export type ScoreBarProps = {
 };
 
 export type TypingAreaProps = {
+  typed: string;
   isRunning: boolean;
   sentence: Sentence | null;
   handleStart: () => void;
@@ -18,6 +19,7 @@ export type TypingAreaProps = {
 
 export type TypingTestProps = {
   sentence: Sentence;
+  typed: string;
 };
 
 export type SquareButtonProps = React.ComponentProps<"button"> & {

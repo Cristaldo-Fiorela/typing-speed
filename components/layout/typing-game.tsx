@@ -78,6 +78,7 @@ const TypingGame = () => {
                 sentence={sentence}
                 isRunning={isRunning}
                 handleStart={handleStart}
+                typed={typed}
             />
         </>
     );
