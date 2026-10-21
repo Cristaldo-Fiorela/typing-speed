@@ -18,4 +18,4 @@ export const MODE_TYPE = ["timed (60s)", "passage"] as const;
 
 export type ModeType = typeof MODE_TYPE[number];
 
-export type CharStatus = "correct" | "incorrect";
+export type CharStatus = "correct" | "incorrect" | "current" | "pending";
