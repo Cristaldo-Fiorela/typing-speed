@@ -9,6 +9,21 @@ const Results = () => {
                 <p>SUBTITULO RESULTADO</p>
             </section>
 
+            <div>
+                <div>
+                    <h3>ESTADISTICA</h3>
+                    <p>RESULTADO ESTADISTICA</p>
+                </div>
+                <div>
+                    <h3>ESTADISTICA</h3>
+                    <p>RESULTADO ESTADISTICA</p>
+                </div>
+                <div>
+                    <h3>ESTADISTICA</h3>
+                    <p>RESULTADO ESTADISTICA</p>
+                </div>
+            </div>
+
             <SquareButton>Go again</SquareButton>
         </main>
     );

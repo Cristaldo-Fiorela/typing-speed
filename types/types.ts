@@ -19,3 +19,11 @@ export const MODE_TYPE = ["timed (60s)", "passage"] as const;
 export type ModeType = typeof MODE_TYPE[number];
 
 export type CharStatus = "correct" | "incorrect" | "current" | "pending";
+
+export type ResultsType = "baseline" | "completed" | "personalbest";
+
+export type ResultInfoType = {
+  icon: string;
+  title: string;
+  message: string;
+}
