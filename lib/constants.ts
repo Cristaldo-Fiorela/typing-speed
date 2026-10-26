@@ -9,17 +9,17 @@ const CHAR_STATUS_STYLES: Record<CharStatus, string> = {
 
 const RESULTS_INFO: Record<ResultsType, ResultInfoType> = {
   baseline: {
-    icon: "public/icons/icon-completed.svg",
+    icon: "/icons/icon-completed.svg",
     title: "Baseline Stablished!",
     message: "You've set the bar. Now the real challenge begins- time to beat it.",
   },
   completed: {
-    icon: "public/icons/icon-completed.svg",
+    icon: "/icons/icon-completed.svg",
     title: "Test Complete!",
     message: "Solid run. Keep pushing to beat your high score.",
   },
   personalbest: {
-    icon: "public/icons/icon-personal-best.svg",
+    icon: "/icons/icon-personal-best.svg",
     title: "High Score Smashed!",
     message: "You' re getting faster. That was incredible typing.",
   },
