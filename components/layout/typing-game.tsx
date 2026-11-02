@@ -18,12 +18,17 @@ const TypingGame = () => {
     const [difficulty, setDifficulty] = useState<DifficultyLevel>("medium");
     const [mode, setMode] = useState<ModeType>("timed (60s)");
 
-    const { counter, FORMATED_COUNTER, isRunning, start, resetCounter } =
-        useCountdown(COUNTER_TIME);
+    const {
+        counterDown,
+        FORMATED_COUNTER_DOWN,
+        isRunningDown,
+        startCountdown,
+        resetCountdown,
+    } = useCountdown(COUNTER_TIME);
     const { sentence, getRandomSentence } = useOneSentence(difficulty);
     const { typed, totalErrors, reset, totalTypedWithErrors } = useTypingTest(
         sentence,
-        isRunning,
+        isRunningDown,
     );
     const { WPM, ACCURACY } = useStadistics(
         typed,
@@ -36,17 +41,17 @@ const TypingGame = () => {
     const handleStart = () => {
         reset();
         getRandomSentence();
-        start();
+        startCountdown();
     };
 
     const handleDifficultyChange = (level: DifficultyLevel) => {
-        if (!isRunning) {
+        if (!isRunningDown) {
             setDifficulty(level);
         }
     };
 
     const handleModeChange = (mode: ModeType) => {
-        if (!isRunning) {
+        if (!isRunningDown) {
             setMode(mode);
         }
     };
@@ -55,7 +60,7 @@ const TypingGame = () => {
     }, [difficulty]);
 
     useEffect(() => {
-        if (isRunning) {
+        if (isRunningDown) {
             console.log("WPM", WPM);
             console.log("accuracy", ACCURACY);
         }
@@ -69,14 +74,14 @@ const TypingGame = () => {
                 difficulty={difficulty}
                 mode={mode}
                 handleModeChange={handleModeChange}
-                formatedCounter={FORMATED_COUNTER}
+                formatedCounter={FORMATED_COUNTER_DOWN}
                 handleDifficultyChange={handleDifficultyChange}
                 WPM={WPM}
                 accuracy={ACCURACY}
             />
             <TypingArea
                 sentence={sentence}
-                isRunning={isRunning}
+                isRunning={isRunningDown}
                 handleStart={handleStart}
                 typed={typed}
             />
