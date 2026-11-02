@@ -54,78 +54,37 @@ function useTypingTest(sentence: Sentence | null, isRunning: boolean) {
   };
 }
 
-function useCountdown(seconds: number) {
-  const [counterDown, setCounterDown] = useState(seconds);
+function useTimer(direction: "down" | "up", initial = 60) {
+  const startValue = direction === "down" ? initial : 0;
+  const [seconds, setSeconds] = useState(startValue);
   const [isActive, setIsActive] = useState(false);
 
-  const isRunningDown = isActive && counterDown > 0;
-
-  useEffect(() => {
-    if (!isRunningDown) return;
-
-    const timeout = setTimeout(() => {
-      setCounterDown((c) => c - 1);
-    }, 1000);
-
-    return () => clearTimeout(timeout);
-  }, [isRunningDown, counterDown]);
-
-  const startCountdown = () => {
-    setCounterDown(seconds);
-    setIsActive(true);
-  };
-
-  const resetCountdown = () => {
-    setIsActive(false);
-    setCounterDown(seconds);
-  };
-
-  const FORMATED_COUNTER_DOWN = String(counterDown).padStart(2, "0");
-
-  return {
-    counterDown,
-    FORMATED_COUNTER_DOWN,
-    isRunningDown,
-    startCountdown,
-    resetCountdown
-  };
-}
-
-
-function useCountUp() {
-  const [counterUp, setCounterUp] = useState(0);
-  const [isRunningUp, setIsRunningUp] = useState(false);
-
-  const isRunning = isRunningUp && counterUp > 0;
+  const isRunning = isActive && (direction === "up" || seconds > 0);
 
   useEffect(() => {
     if (!isRunning) return;
+    const timer = setTimeout(
+      () => setSeconds((seconds) => (direction === "down" ? seconds - 1 : seconds + 1)),
+      1000,
+    );
+    return () => clearTimeout(timer);
+  }, [isRunning, seconds, direction]);
 
-    const timeout = setTimeout(() => {
-      setCounterUp((c) => c - 1);
-    }, 1000);
+  const startTimer = () => { setSeconds(startValue); setIsActive(true); };
+  const stopTimer = () => setIsActive(false);
+  const resetTimer = () => { setIsActive(false); setSeconds(startValue); };
 
-    return () => clearTimeout(timeout);
-  }, [isRunning, counterUp]);
-
-  const startCountUp = () => {
-    setCounterUp(0);
-    setIsRunningUp(true);
-  };
-
-  const resetCountUp = () => {
-    setIsRunningUp(false);
-    setCounterUp(0);
-  };
-
-  const FORMATED_COUNTER_UP = String(counterUp).padStart(2, "0");
+  // segundos transcurridos, sin importar la dirección para WPM
+  const elapsed = direction === "down" ? initial - seconds : seconds;
 
   return {
-    counterUp,
-    FORMATED_COUNTER_UP,
-    isRunningUp,
-    startCountUp,
-    resetCountUp
+    seconds,
+    elapsed,
+    formatted: String(seconds).padStart(2, "0"),
+    isRunning,
+    startTimer,
+    stopTimer,
+    resetTimer,
   };
 }
 
@@ -145,6 +104,6 @@ function useStadistics(typed: string, totalTypedWithErrors: number, error: numbe
 
 export {
   useTypingTest,
-  useCountdown,
+  useTimer,
   useStadistics
 }
