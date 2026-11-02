@@ -77,15 +77,6 @@ const TypingGame = () => {
         }
     }, [typed]);
 
-    useEffect(() => {
-        if (isRunning) {
-            console.log("WPM", WPM);
-            console.log("accuracy", ACCURACY);
-        }
-
-        console.log(typed);
-    }, [typed]);
-
     return (
         <>
             <ScoreBar
