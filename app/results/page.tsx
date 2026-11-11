@@ -8,9 +8,8 @@ const Results = () => {
             <section className="flex flex-col items-center gap-8">
                 <span
                     className={
-                        true
-                            ? "flex items-center justify-center w-11 h-11 rounded-full bg-green-500 shadow-[0_0_0_10px_rgba(74,222,128,0.18),0_0_0_20px_rgba(74,222,128,0.08)]"
-                            : ""
+                        true &&
+                        "flex items-center justify-center w-11 h-11 rounded-full bg-green-500 shadow-[0_0_0_10px_rgba(74,222,128,0.18),0_0_0_20px_rgba(74,222,128,0.08)]"
                     }
                 >
                     <Image
