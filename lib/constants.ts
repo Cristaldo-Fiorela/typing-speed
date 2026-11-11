@@ -19,7 +19,7 @@ const RESULTS_INFO: Record<ResultsType, ResultInfoType> = {
     message: "Solid run. Keep pushing to beat your high score.",
   },
   personalbest: {
-    icon: "/icons/icon-personal-best.svg",
+    icon: "/icons/icon-new-pb.svg",
     title: "High Score Smashed!",
     message: "You' re getting faster. That was incredible typing.",
   },

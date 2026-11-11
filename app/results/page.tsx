@@ -6,7 +6,13 @@ const Results = () => {
     return (
         <main className="flex flex-col flex-1 items-center justify-center gap-8">
             <section className="flex flex-col items-center gap-8">
-                <span className="flex items-center justify-center w-11 h-11 rounded-full bg-green-500 shadow-[0_0_0_10px_rgba(74,222,128,0.18),0_0_0_20px_rgba(74,222,128,0.08)]">
+                <span
+                    className={
+                        true
+                            ? "flex items-center justify-center w-11 h-11 rounded-full bg-green-500 shadow-[0_0_0_10px_rgba(74,222,128,0.18),0_0_0_20px_rgba(74,222,128,0.08)]"
+                            : ""
+                    }
+                >
                     <Image
                         src="/icons/icon-completed.svg"
                         alt="Refresh"
