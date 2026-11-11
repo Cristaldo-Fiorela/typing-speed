@@ -5,15 +5,19 @@ import Image from "next/image";
 const Results = () => {
     return (
         <main className="flex flex-col flex-1 items-center justify-center gap-8">
-            <section className="flex flex-col items-center">
-                <Image
-                    src="/icons/icon-completed.svg"
-                    alt="Refresh"
-                    width={24}
-                    height={24}
-                />
-                <h2 className="text-2xl font-bold">TITULO RESULTADO</h2>
-                <p className="text-neutral-400">SUBTITULO RESULTADO</p>
+            <section className="flex flex-col items-center gap-8">
+                <span className="flex items-center justify-center w-11 h-11 rounded-full bg-green-500 shadow-[0_0_0_10px_rgba(74,222,128,0.18),0_0_0_20px_rgba(74,222,128,0.08)]">
+                    <Image
+                        src="/icons/icon-completed.svg"
+                        alt="Refresh"
+                        width={40}
+                        height={40}
+                    />
+                </span>
+                <div className="flex flex-col items-center">
+                    <h2 className="text-2xl font-bold">TITULO RESULTADO</h2>
+                    <p className="text-neutral-400">SUBTITULO RESULTADO</p>
+                </div>
             </section>
 
             <div className="flex gap-4">
