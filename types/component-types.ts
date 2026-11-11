@@ -8,6 +8,7 @@ export type ScoreBarProps = {
   handleModeChange: (mode: ModeType) => void;
   WPM: number;
   accuracy: number;
+  isRunning: boolean;
 };
 
 export type TypingAreaProps = {

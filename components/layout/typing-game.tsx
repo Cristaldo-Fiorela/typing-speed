@@ -87,6 +87,7 @@ const TypingGame = () => {
                 handleDifficultyChange={handleDifficultyChange}
                 WPM={WPM}
                 accuracy={ACCURACY}
+                isRunning={isRunning}
             />
             <TypingArea
                 sentence={sentence}

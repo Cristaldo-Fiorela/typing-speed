@@ -11,6 +11,7 @@ const ScoreBar = ({
     handleModeChange,
     accuracy,
     WPM,
+    isRunning,
 }: ScoreBarProps) => {
     return (
         <div className="flex justify-between items-center border-b border-neutral-800 text-neutral-400 pb-3">
@@ -21,13 +22,27 @@ const ScoreBar = ({
                 </h2>
                 <h2 className="px-3">
                     Accuracy:{" "}
-                    <span className="text-neutral-50 font-bold">
+                    <span
+                        className={
+                            !isRunning
+                                ? "text-neutral-50 font-bold"
+                                : accuracy === 100
+                                  ? "text-green-500 font-bold"
+                                  : "text-red-500 font-bold"
+                        }
+                    >
                         {!accuracy ? "0" : String(accuracy.toFixed(2))}%
                     </span>
                 </h2>
                 <h2 className="px-3">
                     Time:{" "}
-                    <span className="text-neutral-50 font-bold">
+                    <span
+                        className={
+                            isRunning
+                                ? "text-yellow-400 font-bold"
+                                : "text-neutral-50 font-bold"
+                        }
+                    >
                         0:{formatedCounter}
                     </span>
                 </h2>
