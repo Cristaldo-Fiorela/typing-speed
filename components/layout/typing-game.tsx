@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { DifficultyLevel, ModeType } from "@/types/types";
 
 import ScoreBar from "../typing-test/score-bar";
@@ -11,10 +11,13 @@ import {
     useTypingTest,
 } from "@/hooks/use-typing-test";
 import { useOneSentence } from "@/hooks/use-fetch-data";
+import Results from "./results";
 
 const COUNTER_TIME: number = 20;
 
 const TypingGame = () => {
+    const wasRunning = useRef<boolean>(false);
+    const [finished, setFinished] = useState<boolean>(false);
     const [difficulty, setDifficulty] = useState<DifficultyLevel>("medium");
     const [mode, setMode] = useState<ModeType>("timed (60s)");
 
@@ -77,26 +80,37 @@ const TypingGame = () => {
         }
     }, [typed]);
 
-    return (
-        <>
-            <ScoreBar
-                difficulty={difficulty}
-                mode={mode}
-                handleModeChange={handleModeChange}
-                formatedCounter={formatted}
-                handleDifficultyChange={handleDifficultyChange}
-                WPM={WPM}
-                accuracy={ACCURACY}
-                isRunning={isRunning}
-            />
-            <TypingArea
-                sentence={sentence}
-                isRunning={isRunning}
-                handleStart={handleStart}
-                typed={typed}
-            />
-        </>
-    );
+    useEffect(() => {
+        if (wasRunning.current && !isRunning) {
+            setFinished(true);
+        }
+        wasRunning.current = isRunning;
+    }, [isRunning]);
+
+    if (finished) {
+        return <Results WPM={WPM} accuracy={ACCURACY} counter={formatted} />;
+    } else {
+        return (
+            <>
+                <ScoreBar
+                    difficulty={difficulty}
+                    mode={mode}
+                    handleModeChange={handleModeChange}
+                    formatedCounter={formatted}
+                    handleDifficultyChange={handleDifficultyChange}
+                    WPM={WPM}
+                    accuracy={ACCURACY}
+                    isRunning={isRunning}
+                />
+                <TypingArea
+                    sentence={sentence}
+                    isRunning={isRunning}
+                    handleStart={handleStart}
+                    typed={typed}
+                />
+            </>
+        );
+    }
 };
 
 export default TypingGame;

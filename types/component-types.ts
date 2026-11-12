@@ -28,3 +28,9 @@ export type SquareButtonProps = React.ComponentProps<"button"> & {
   fill?: boolean;
   active?: boolean;
 };
+
+export type ResultsProps = {
+  WPM: number;
+  accuracy: number;
+  counter: string;
+}

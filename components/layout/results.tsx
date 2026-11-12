@@ -1,8 +1,9 @@
 import SquareButton from "@/components/ui/square-button";
 import StadisticBox from "@/components/ui/stadistic-box";
+import { ResultsProps } from "@/types/component-types";
 import Image from "next/image";
 
-const Results = () => {
+const Results = ({ WPM, accuracy, counter }: ResultsProps) => {
     return (
         <main className="flex flex-col flex-1 items-center justify-center gap-8">
             <section className="flex flex-col items-center gap-8">
@@ -26,19 +27,23 @@ const Results = () => {
             </section>
 
             <div className="flex gap-4">
-                <StadisticBox title="ESTADISTICA">
-                    <p>RESULTADO ESTADISTICA</p>
+                <StadisticBox title="WPM">
+                    <p>{WPM}</p>
                 </StadisticBox>
-                <StadisticBox title="ESTADISTICA">
-                    <p className={true ? "text-green-500" : "text-red-500"}>
-                        RESULTADO ESTADISTICA
+                <StadisticBox title="Accuracy">
+                    <p
+                        className={
+                            accuracy === 100 ? "text-green-500" : "text-red-500"
+                        }
+                    >
+                        {!accuracy ? "0" : String(accuracy.toFixed(2))}%
                     </p>
                 </StadisticBox>
-                <StadisticBox title="ESTADISTICA">
+                <StadisticBox title="Characters">
                     <p className="text-green-500">
-                        RESULTADO{" "}
+                        {counter}{" "}
                         <span className="text-neutral-400 font-bold">/</span>
-                        <span className="text-red-500">ESTADISTICA</span>
+                        <span className="text-red-500">5</span>
                     </p>
                 </StadisticBox>
             </div>
