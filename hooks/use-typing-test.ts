@@ -102,8 +102,36 @@ function useStadistics(typed: string, totalTypedWithErrors: number, error: numbe
   }
 }
 
+/**
+ * 
+ * @param storageKey key composed of the difficulty + mode of the actual game
+ * @returns actual personal best. Funcion for update personal best
+ */
+function usePersonalBest(storageKey: string) {
+  const [personalBest, setPersonalBest] = useState(0);
+
+  useEffect(() => {
+    setPersonalBest(Number(sessionStorage.getItem(storageKey) ?? 0));
+  }, [storageKey])
+
+
+  const updatePersonalBest = (wpm: number, accuracy: number) => {
+    if (accuracy >= 90 && wpm > personalBest) {
+      sessionStorage.setItem(storageKey, String(wpm));
+      setPersonalBest(wpm);
+      return true;
+    }
+  }
+
+  return {
+    personalBest,
+    updatePersonalBest,
+  }
+}
+
 export {
   useTypingTest,
   useTimer,
-  useStadistics
+  useStadistics,
+  usePersonalBest
 }

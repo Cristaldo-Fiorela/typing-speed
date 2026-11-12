@@ -78,5 +78,5 @@ export {
   getNetWPM,
   getAccuracy,
   formatWPM,
-  getCharStatus
+  getCharStatus,
 }
