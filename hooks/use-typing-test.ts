@@ -1,5 +1,6 @@
 "use client"
 
+import { STORAGE_KEY } from "@/lib/constants";
 import { formatWPM, getAccuracy, getGrossWPM, getNetWPM, subscribe } from "@/lib/utils";
 import { Sentence } from "@/types/types";
 import { useEffect, useState, useSyncExternalStore } from "react";
@@ -104,19 +105,18 @@ function useStadistics(typed: string, totalTypedWithErrors: number, error: numbe
 
 /**
  * 
- * @param storageKey key composed of the difficulty + mode of the actual game
  * @returns actual personal best. Funcion for update personal best
  */
-function usePersonalBest(storageKey: string) {
+function usePersonalBest() {
   const personalBest = useSyncExternalStore(
     subscribe,
-    () => Number(sessionStorage.getItem(storageKey) ?? 0),
+    () => Number(sessionStorage.getItem(STORAGE_KEY) ?? 0),
     () => 0
   )
 
   const updatePersonalBest = (wpm: number, accuracy: number): boolean => {
     if (accuracy >= 90 && wpm > personalBest) {
-      sessionStorage.setItem(storageKey, String(wpm));
+      sessionStorage.setItem(STORAGE_KEY, String(wpm));
       window.dispatchEvent(new Event("personal-best"));
       return true;
     }
