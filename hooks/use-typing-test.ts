@@ -1,8 +1,8 @@
 "use client"
 
-import { formatWPM, getAccuracy, getGrossWPM, getNetWPM } from "@/lib/utils";
+import { formatWPM, getAccuracy, getGrossWPM, getNetWPM, subscribe } from "@/lib/utils";
 import { Sentence } from "@/types/types";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 
 function useTypingTest(sentence: Sentence | null, isRunning: boolean) {
   const [typed, setTyped] = useState("");
@@ -108,19 +108,19 @@ function useStadistics(typed: string, totalTypedWithErrors: number, error: numbe
  * @returns actual personal best. Funcion for update personal best
  */
 function usePersonalBest(storageKey: string) {
-  const [personalBest, setPersonalBest] = useState(0);
+  const personalBest = useSyncExternalStore(
+    subscribe,
+    () => Number(sessionStorage.getItem(storageKey) ?? 0),
+    () => 0
+  )
 
-  useEffect(() => {
-    setPersonalBest(Number(sessionStorage.getItem(storageKey) ?? 0));
-  }, [storageKey])
-
-
-  const updatePersonalBest = (wpm: number, accuracy: number) => {
+  const updatePersonalBest = (wpm: number, accuracy: number): boolean => {
     if (accuracy >= 90 && wpm > personalBest) {
       sessionStorage.setItem(storageKey, String(wpm));
-      setPersonalBest(wpm);
+      window.dispatchEvent(new Event("personal-best"));
       return true;
     }
+    return false;
   }
 
   return {

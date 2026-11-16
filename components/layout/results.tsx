@@ -26,7 +26,7 @@ const Results = ({ WPM, accuracy, counter }: ResultsProps) => {
                 </div>
             </section>
 
-            <div className="flex gap-4">
+            <div className="grid grid-cols-3 gap-4 w-full max-w-md">
                 <StadisticBox title="WPM">
                     <p>{WPM}</p>
                 </StadisticBox>

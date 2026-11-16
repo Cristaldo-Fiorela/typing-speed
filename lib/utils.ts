@@ -72,6 +72,17 @@ function getCharStatus(idx: number, typed: string, sentence: string): CharStatus
   return "pending";
 }
 
+/**
+ * Registers React as an observer of the "personal-best" event
+ * @param onChange  callback that delivers React. Called when the observed record changes to re-render the value.
+ * @returns  cleanup function that removes the listener from the event.
+ */
+function subscribe(onChange: () => void) {
+  window.addEventListener("personal-best", onChange);
+  return () => window.removeEventListener("personal-best", onChange);
+}
+
+
 export {
   getRandomItem,
   getGrossWPM,
@@ -79,4 +90,5 @@ export {
   getAccuracy,
   formatWPM,
   getCharStatus,
+  subscribe
 }
