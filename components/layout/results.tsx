@@ -24,8 +24,8 @@ const Results = ({
                     <Image
                         src={RESULTS_INFO[type]?.icon}
                         alt="Refresh"
-                        width={40}
-                        height={40}
+                        width={60}
+                        height={60}
                     />
                 </span>
                 <div className="flex flex-col items-center">
@@ -40,19 +40,21 @@ const Results = ({
 
             <div className="grid grid-cols-3 gap-4 w-full max-w-md">
                 <StadisticBox title="WPM">
-                    <p>{WPM}</p>
+                    <p className="font-bold">{WPM}</p>
                 </StadisticBox>
                 <StadisticBox title="Accuracy">
                     <p
                         className={
-                            accuracy === 100 ? "text-green-500" : "text-red-500"
+                            accuracy === 100
+                                ? "text-green-500 font-bold"
+                                : "text-red-500 font-bold"
                         }
                     >
                         {!accuracy ? "0" : String(accuracy.toFixed(2))}%
                     </p>
                 </StadisticBox>
                 <StadisticBox title="Characters">
-                    <p className="text-green-500">
+                    <p className="text-green-500 font-bold">
                         {counter}{" "}
                         <span className="text-neutral-400 font-bold">/</span>
                         <span className="text-red-500">5</span>
@@ -62,7 +64,7 @@ const Results = ({
 
             <SquareButton
                 fill
-                className="bg-neutral-200 border-neutral-200 text-neutral-900 font-bold hover:bg-neutral-50 capitalize"
+                className="bg-neutral-200 border-neutral-200 text-neutral-900 font-bold hover:bg-neutral-50 capitalize px-4 py-3 text-lg rounded-xl"
                 onClick={() => setFinished(false)}
             >
                 <span className="flex items-center gap-2">
