@@ -21,7 +21,7 @@ const TypingArea = ({
                     <SquareButton
                         onClick={handleStart}
                         fill
-                        className="px-6 py-3 text-lg"
+                        className="px-6 py-3 text-lg rounded-xl"
                     >
                         Start Typing Test
                     </SquareButton>
