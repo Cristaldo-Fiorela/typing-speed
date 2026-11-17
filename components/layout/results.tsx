@@ -62,12 +62,12 @@ const Results = ({
 
             <SquareButton
                 fill
-                className="bg-neutral-200 border-neutral-200 text-neutral-900 font-bold hover:bg-neutral-50"
+                className="bg-neutral-200 border-neutral-200 text-neutral-900 font-bold hover:bg-neutral-50 capitalize"
                 onClick={() => setFinished(false)}
             >
                 <span className="flex items-center gap-2">
                     {" "}
-                    Go again
+                    {type === "personalbest" ? "Beat this score" : "Go again"}
                     <Image
                         src="/icons/icon-restart.svg"
                         alt="Refresh"
