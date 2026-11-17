@@ -14,6 +14,8 @@ import {
 import { useOneSentence } from "@/hooks/use-fetch-data";
 import Results from "./results";
 import { COUNTER_TIME, MIN_ACCURACY } from "@/lib/constants";
+import SquareButton from "../ui/square-button";
+import Image from "next/image";
 
 const TypingGame = () => {
     const wasRunning = useRef<boolean>(false);
@@ -66,6 +68,15 @@ const TypingGame = () => {
     const handleGoBack = () => {
         setFinished(false);
         reset();
+        resetTimer();
+    };
+
+    const handleRestart = () => {
+        wasRunning.current = false;
+        stopTimer();
+        reset();
+        resetTimer();
+        getRandomSentence();
     };
 
     const handlePersonalBest = (wpm: number, accuracy: number): ResultsType => {
@@ -130,6 +141,23 @@ const TypingGame = () => {
                     handleStart={handleStart}
                     typed={typed}
                 />
+                {isRunning && (
+                    <div className="flex justify-center items-center border-t border-neutral-800 text-neutral-400 py-6">
+                        <SquareButton
+                            onClick={handleRestart}
+                            fill
+                            className="px-4 py-3 text-lg rounded-xl bg-neutral-800 border-neutral-800 flex gap-2 font-bold hover:bg-neutral-600"
+                        >
+                            Restart text
+                            <Image
+                                src="/icons/icon-restart.svg"
+                                alt="Refresh"
+                                width={15}
+                                height={15}
+                            />
+                        </SquareButton>
+                    </div>
+                )}
             </>
         );
     }
