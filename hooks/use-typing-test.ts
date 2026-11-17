@@ -105,7 +105,7 @@ function useStadistics(typed: string, totalTypedWithErrors: number, error: numbe
 
 /**
  * 
- * @returns actual personal best. Funcion for update personal best
+ * @returns actual personal best. function for update personal best
  */
 function usePersonalBest() {
   const personalBest = useSyncExternalStore(

@@ -1,12 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import {
-    DifficultyLevel,
-    ModeType,
-    RESULTS_TYPE,
-    ResultsType,
-} from "@/types/types";
+import { DifficultyLevel, ModeType, ResultsType } from "@/types/types";
 
 import ScoreBar from "../typing-test/score-bar";
 import TypingArea from "../typing-test/typing-area";
@@ -33,15 +28,8 @@ const TypingGame = () => {
     const direction = mode.startsWith("timed") ? "down" : "up";
 
     const { sentence, getRandomSentence } = useOneSentence(difficulty);
-    const {
-        formatted,
-        elapsed,
-        isRunning,
-        resetTimer,
-        seconds,
-        startTimer,
-        stopTimer,
-    } = useTimer(direction, COUNTER_TIME);
+    const { formatted, elapsed, isRunning, resetTimer, startTimer, stopTimer } =
+        useTimer(direction, COUNTER_TIME);
 
     const { typed, totalErrors, reset, totalTypedWithErrors } = useTypingTest(
         sentence,

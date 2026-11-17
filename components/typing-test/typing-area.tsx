@@ -2,8 +2,7 @@ import { TypingAreaProps } from "@/types/component-types";
 
 import SquareButton from "../ui/square-button";
 import TypingTest from "./typing-test";
-
-const PLACEHOLDER = "Que sera sera. What will be, will be.".repeat(18);
+import { PLACEHOLDER } from "@/lib/constants";
 
 const TypingArea = ({
     isRunning,
