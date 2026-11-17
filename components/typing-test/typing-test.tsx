@@ -5,7 +5,10 @@ import { TypingTestProps } from "@/types/component-types";
 const TypingTest = ({ sentence, typed }: TypingTestProps) => {
     return (
         <div id="typing-area" className="flex-1 my-3">
-            <p className="text-2xl m-3 select-none" key={sentence?.id}>
+            <p
+                className="text-2xl m-3 select-none [font-variant-ligatures:none]"
+                key={sentence?.id}
+            >
                 {[...sentence?.text].map((char, idx) => (
                     <span
                         key={idx}
