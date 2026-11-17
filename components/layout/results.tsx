@@ -8,7 +8,8 @@ const Results = ({
     WPM,
     accuracy,
     type,
-    counter,
+    totalCorrectChars,
+    totalErrorsChars,
     setFinished,
 }: ResultsProps) => {
     return (
@@ -55,9 +56,9 @@ const Results = ({
                 </StadisticBox>
                 <StadisticBox title="Characters">
                     <p className="text-green-500 font-bold">
-                        {counter}{" "}
-                        <span className="text-neutral-400 font-bold">/</span>
-                        <span className="text-red-500">5</span>
+                        {totalCorrectChars}{" "}
+                        <span className="text-neutral-400">/</span>
+                        <span className="text-red-500">{totalErrorsChars}</span>
                     </p>
                 </StadisticBox>
             </div>

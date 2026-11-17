@@ -33,7 +33,8 @@ export type SquareButtonProps = React.ComponentProps<"button"> & {
 export type ResultsProps = {
   WPM: number;
   accuracy: number;
-  counter: string;
+  totalCorrectChars: number;
+  totalErrorsChars: number;
   type: ResultsType;
   setFinished: Dispatch<SetStateAction<boolean>>;
 }

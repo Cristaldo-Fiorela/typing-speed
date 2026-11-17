@@ -106,8 +106,9 @@ const TypingGame = () => {
             <Results
                 WPM={WPM}
                 accuracy={ACCURACY}
-                counter={formatted}
                 type={personalBestType}
+                totalCorrectChars={typed.length}
+                totalErrorsChars={totalErrors}
                 setFinished={setFinished}
             />
         );
