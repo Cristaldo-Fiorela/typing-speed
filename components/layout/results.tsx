@@ -75,9 +75,7 @@ const Results = ({
                 >
                     <span className="flex items-center gap-2">
                         {" "}
-                        {type === "personalbest"
-                            ? "Beat this score"
-                            : "Go again"}
+                        {type === "completed" ? "Go again" : "Beat this score"}
                         <Image
                             src="/icons/icon-restart.svg"
                             alt="Refresh"
