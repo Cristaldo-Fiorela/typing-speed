@@ -12,8 +12,10 @@ const Results = ({
     totalErrorsChars,
     handleGoBack,
 }: ResultsProps) => {
+    const isPersonalBest = type === "personalbest";
+
     return (
-        <main className="">
+        <main className="relative flex flex-1 flex-col">
             <div className="flex flex-col flex-1 items-center justify-center gap-8">
                 <section className="flex flex-col items-center gap-8">
                     <span
@@ -86,10 +88,10 @@ const Results = ({
                     </span>
                 </SquareButton>
             </div>
-            {type === "personalbest" && (
+            {isPersonalBest && (
                 <div
                     aria-hidden
-                    className="pointer-events-none fixed inset-x-0 bottom-0 h-1/3 -z-10"
+                    className="pointer-events-none relative h-40 shrink-0 w-screen ml-[calc(50%-50vw)]"
                 >
                     <Image
                         src="/icons/pattern-confetti.svg"
@@ -98,6 +100,27 @@ const Results = ({
                         className="object-cover object-bottom"
                     />
                 </div>
+            )}
+
+            {!isPersonalBest && (
+                <>
+                    <Image
+                        src="/icons/pattern-star-2.svg"
+                        alt=""
+                        aria-hidden
+                        width={32}
+                        height={32}
+                        className="pointer-events-none absolute left-0 top-1/4"
+                    />
+                    <Image
+                        src="/icons/pattern-star-1.svg"
+                        alt=""
+                        aria-hidden
+                        width={64}
+                        height={64}
+                        className="pointer-events-none absolute right-0 top-1/2"
+                    />
+                </>
             )}
         </main>
     );
