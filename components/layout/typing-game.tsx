@@ -87,11 +87,7 @@ const TypingGame = () => {
 
     // modo passage
     useEffect(() => {
-        if (
-            direction === "up" &&
-            sentence &&
-            typed.length >= sentence.text.length
-        ) {
+        if (isRunning && sentence && typed.length >= sentence.text.length) {
             stopTimer();
         }
     }, [typed]);
