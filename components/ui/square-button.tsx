@@ -9,7 +9,7 @@ const SquareButton = ({
 }: SquareButtonProps) => {
     return (
         <button
-            className={`border rounded py-1 px-2 transition-colors cursor-pointer text-sm 
+            className={`border rounded-xl py-1 px-2 transition-colors cursor-pointer text-sm 
                 ${
                     fill
                         ? "text-neutral-50 border-blue-600 bg-blue-600 hover:bg-blue-400"
