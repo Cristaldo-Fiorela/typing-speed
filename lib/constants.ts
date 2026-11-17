@@ -6,6 +6,9 @@ const MIN_ACCURACY = 70;
 
 const PLACEHOLDER = "Que sera sera. What will be, will be.".repeat(18);
 
+const COUNTER_TIME: number = 60;
+
+
 const CHAR_STATUS_STYLES: Record<CharStatus, string> = {
   correct: "text-green-500",
   incorrect: "text-red-500 underline",
@@ -35,6 +38,7 @@ export {
   STORAGE_KEY,
   MIN_ACCURACY,
   PLACEHOLDER,
+  COUNTER_TIME,
   CHAR_STATUS_STYLES,
   RESULTS_INFO
 }

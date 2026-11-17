@@ -13,9 +13,7 @@ import {
 } from "@/hooks/use-typing-test";
 import { useOneSentence } from "@/hooks/use-fetch-data";
 import Results from "./results";
-import { MIN_ACCURACY } from "@/lib/constants";
-
-const COUNTER_TIME: number = 20;
+import { COUNTER_TIME, MIN_ACCURACY } from "@/lib/constants";
 
 const TypingGame = () => {
     const wasRunning = useRef<boolean>(false);
