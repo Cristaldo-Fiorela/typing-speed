@@ -20,7 +20,10 @@ export type ModeType = typeof MODE_TYPE[number];
 
 export type CharStatus = "correct" | "incorrect" | "current" | "pending";
 
-export type ResultsType = "baseline" | "completed" | "personalbest";
+export const RESULTS_TYPE = ["baseline", "completed", "personalbest"] as const;
+
+export type ResultsType = typeof RESULTS_TYPE[number];
+
 
 export type ResultInfoType = {
   icon: string;

@@ -2,6 +2,8 @@ import { CharStatus, ResultInfoType, ResultsType } from "@/types/types"
 
 const STORAGE_KEY = "personalBest";
 
+const MIN_ACCURACY = 70;
+
 const CHAR_STATUS_STYLES: Record<CharStatus, string> = {
   correct: "text-green-500",
   incorrect: "text-red-500 underline",
@@ -29,6 +31,7 @@ const RESULTS_INFO: Record<ResultsType, ResultInfoType> = {
 
 export {
   STORAGE_KEY,
+  MIN_ACCURACY,
   CHAR_STATUS_STYLES,
   RESULTS_INFO
 }

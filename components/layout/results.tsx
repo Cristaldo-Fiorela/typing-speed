@@ -1,28 +1,34 @@
 import SquareButton from "@/components/ui/square-button";
 import StadisticBox from "@/components/ui/stadistic-box";
+import { RESULTS_INFO } from "@/lib/constants";
 import { ResultsProps } from "@/types/component-types";
 import Image from "next/image";
 
-const Results = ({ WPM, accuracy, counter }: ResultsProps) => {
+const Results = ({ WPM, accuracy, type, counter }: ResultsProps) => {
     return (
         <main className="flex flex-col flex-1 items-center justify-center gap-8">
             <section className="flex flex-col items-center gap-8">
                 <span
                     className={
-                        true &&
-                        "flex items-center justify-center w-11 h-11 rounded-full bg-green-500 shadow-[0_0_0_10px_rgba(74,222,128,0.18),0_0_0_20px_rgba(74,222,128,0.08)]"
+                        type !== "personalbest"
+                            ? "flex items-center justify-center w-11 h-11 rounded-full bg-green-500 shadow-[0_0_0_10px_rgba(74,222,128,0.18),0_0_0_20px_rgba(74,222,128,0.08)]"
+                            : ""
                     }
                 >
                     <Image
-                        src="/icons/icon-completed.svg"
+                        src={RESULTS_INFO[type]?.icon}
                         alt="Refresh"
                         width={40}
                         height={40}
                     />
                 </span>
                 <div className="flex flex-col items-center">
-                    <h2 className="text-2xl font-bold">TITULO RESULTADO</h2>
-                    <p className="text-neutral-400">SUBTITULO RESULTADO</p>
+                    <h2 className="text-2xl font-bold">
+                        {RESULTS_INFO[type]?.title}
+                    </h2>
+                    <p className="text-neutral-400">
+                        {RESULTS_INFO[type]?.message}
+                    </p>
                 </div>
             </section>
 

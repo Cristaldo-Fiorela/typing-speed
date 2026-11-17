@@ -1,17 +1,24 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { DifficultyLevel, ModeType } from "@/types/types";
+import {
+    DifficultyLevel,
+    ModeType,
+    RESULTS_TYPE,
+    ResultsType,
+} from "@/types/types";
 
 import ScoreBar from "../typing-test/score-bar";
 import TypingArea from "../typing-test/typing-area";
 import {
+    usePersonalBest,
     useStadistics,
     useTimer,
     useTypingTest,
 } from "@/hooks/use-typing-test";
 import { useOneSentence } from "@/hooks/use-fetch-data";
 import Results from "./results";
+import { MIN_ACCURACY } from "@/lib/constants";
 
 const COUNTER_TIME: number = 20;
 
@@ -20,6 +27,8 @@ const TypingGame = () => {
     const [finished, setFinished] = useState<boolean>(false);
     const [difficulty, setDifficulty] = useState<DifficultyLevel>("medium");
     const [mode, setMode] = useState<ModeType>("timed (60s)");
+    const [personalBestType, setPersonalBestType] =
+        useState<ResultsType>("completed");
 
     const direction = mode.startsWith("timed") ? "down" : "up";
 
@@ -38,6 +47,7 @@ const TypingGame = () => {
         sentence,
         isRunning,
     );
+
     const { WPM, ACCURACY } = useStadistics(
         typed,
         totalTypedWithErrors,
@@ -45,6 +55,8 @@ const TypingGame = () => {
         elapsed,
         sentence?.text ?? "",
     );
+
+    const { personalBest, updatePersonalBest } = usePersonalBest();
 
     const handleStart = () => {
         reset();
@@ -65,6 +77,19 @@ const TypingGame = () => {
         }
     };
 
+    const handlePersonalBest = (wpm: number, accuracy: number): ResultsType => {
+        if (personalBest === 0) {
+            updatePersonalBest(wpm);
+            return "baseline";
+        }
+        if (wpm > personalBest && accuracy >= MIN_ACCURACY) {
+            updatePersonalBest(wpm);
+            return "personalbest";
+        }
+
+        return "completed";
+    };
+
     useEffect(() => {
         getRandomSentence();
     }, [difficulty]);
@@ -83,12 +108,20 @@ const TypingGame = () => {
     useEffect(() => {
         if (wasRunning.current && !isRunning) {
             setFinished(true);
+            setPersonalBestType(handlePersonalBest(WPM, ACCURACY));
         }
         wasRunning.current = isRunning;
     }, [isRunning]);
 
     if (finished) {
-        return <Results WPM={WPM} accuracy={ACCURACY} counter={formatted} />;
+        return (
+            <Results
+                WPM={WPM}
+                accuracy={ACCURACY}
+                counter={formatted}
+                type={personalBestType}
+            />
+        );
     } else {
         return (
             <>

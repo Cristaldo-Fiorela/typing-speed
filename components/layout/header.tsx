@@ -1,6 +1,10 @@
+"use client";
+
+import { usePersonalBest } from "@/hooks/use-typing-test";
 import Image from "next/image";
 
 export default function Header() {
+    const { personalBest } = usePersonalBest();
     return (
         <header className="flex justify-center w-full py-1.5">
             <div className="flex justify-between w-full ">
@@ -28,7 +32,9 @@ export default function Header() {
                     />
                     <h2 className="text-neutral-400">
                         Personal best:{" "}
-                        <span className="text-neutral-50">0 WPM</span>
+                        <span className="text-neutral-50">
+                            {personalBest} WPM
+                        </span>
                     </h2>
                 </div>
             </div>

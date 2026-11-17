@@ -114,13 +114,9 @@ function usePersonalBest() {
     () => 0
   )
 
-  const updatePersonalBest = (wpm: number, accuracy: number): boolean => {
-    if (accuracy >= 90 && wpm > personalBest) {
-      sessionStorage.setItem(STORAGE_KEY, String(wpm));
-      window.dispatchEvent(new Event("personal-best"));
-      return true;
-    }
-    return false;
+  const updatePersonalBest = (wpm: number) => {
+    sessionStorage.setItem(STORAGE_KEY, String(wpm));
+    window.dispatchEvent(new Event("personal-best"));
   }
 
   return {

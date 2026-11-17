@@ -1,4 +1,4 @@
-import { DifficultyLevel, ModeType, Sentence } from "./types";
+import { DifficultyLevel, ModeType, ResultsType, Sentence } from "./types";
 
 export type ScoreBarProps = {
   difficulty: DifficultyLevel;
@@ -33,4 +33,5 @@ export type ResultsProps = {
   WPM: number;
   accuracy: number;
   counter: string;
+  type: ResultsType;
 }
