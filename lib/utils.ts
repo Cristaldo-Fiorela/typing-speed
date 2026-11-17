@@ -48,7 +48,7 @@ function getNetWPM(gross_wpm: number, total_errors: number, time: number): numbe
  */
 function getAccuracy(total_errors: number, total_char: number): number {
   const totalTyped = total_char + total_errors;
-  if (totalTyped <= 0) return 100;
+  if (totalTyped <= 0) return 0;
   return (total_char / totalTyped) * 100;
 }
 

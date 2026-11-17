@@ -132,7 +132,7 @@ const TypingGame = () => {
                     formatedCounter={formatted}
                     handleDifficultyChange={handleDifficultyChange}
                     WPM={WPM}
-                    accuracy={ACCURACY}
+                    accuracy={isRunning ? ACCURACY : 100}
                     isRunning={isRunning}
                 />
                 <TypingArea
