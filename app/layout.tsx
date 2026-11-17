@@ -3,6 +3,7 @@ import "./globals.css";
 import localFont from "next/font/local";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
+import { GameBoundary, GameProvider } from "@/components/layout/game-provider";
 
 const sora = localFont({
     src: "../fonts/Sora-VariableFont_wght.ttf",
@@ -20,22 +21,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <html lang="en" className={`${sora.variable} h-full antialiased`}>
             <body className="min-h-full flex flex-col bg-neutral-800 text-neutral-50">
                 <div className="mx-auto flex w-full max-w-300 flex-1 flex-col px-4 md:px-8">
-                    <Header />
-                    {children}
-                    {/* 
-                    <!-- Test Complete Start -->
-                    
-                    Test Complete!
-                    Solid run. Keep pushing to beat your high score.
-                    
-                    WPM: <!-- WPM -->
-                    Accuracy: <!-- Accuracy -->
-                    Characters: <!-- Correct/Incorrect -->
-                    
-                    Go Again
-                    
-                    <!-- Test Complete End -->
-                    */}
+                    <GameProvider>
+                        <Header />
+                        <GameBoundary>{children}</GameBoundary>
+                    </GameProvider>
                     <Footer />
                 </div>
             </body>

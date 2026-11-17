@@ -2,13 +2,20 @@
 
 import { usePersonalBest } from "@/hooks/use-typing-test";
 import Image from "next/image";
+import Link from "next/link";
+import { useGameContext } from "./game-provider";
 
 export default function Header() {
     const { personalBest } = usePersonalBest();
+    const { resetGame } = useGameContext();
     return (
         <header className="flex justify-center w-full py-1.5">
-            <div className="flex justify-between w-full ">
-                <div className="flex items-center gap-2">
+            <div className="flex justify-between w-full">
+                <Link
+                    href="/"
+                    onClick={resetGame}
+                    className="flex items-center gap-2"
+                >
                     <Image
                         src="/icons/logo-small.svg"
                         alt="Typing Speed Test"
@@ -21,7 +28,7 @@ export default function Header() {
                             Type as fast as you can in 60 seconds
                         </small>
                     </div>
-                </div>
+                </Link>
 
                 <div className="flex items-center gap-2">
                     <Image
