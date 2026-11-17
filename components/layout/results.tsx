@@ -10,7 +10,7 @@ const Results = ({
     type,
     totalCorrectChars,
     totalErrorsChars,
-    setFinished,
+    handleGoBack,
 }: ResultsProps) => {
     return (
         <main className="flex flex-col flex-1 items-center justify-center gap-8">
@@ -66,7 +66,7 @@ const Results = ({
             <SquareButton
                 fill
                 className="bg-neutral-200 border-neutral-200 text-neutral-900 font-bold hover:bg-neutral-50 capitalize px-4 py-3 text-lg rounded-xl"
-                onClick={() => setFinished(false)}
+                onClick={handleGoBack}
             >
                 <span className="flex items-center gap-2">
                     {" "}

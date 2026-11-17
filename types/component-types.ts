@@ -36,5 +36,5 @@ export type ResultsProps = {
   totalCorrectChars: number;
   totalErrorsChars: number;
   type: ResultsType;
-  setFinished: Dispatch<SetStateAction<boolean>>;
+  handleGoBack: () => void;
 }

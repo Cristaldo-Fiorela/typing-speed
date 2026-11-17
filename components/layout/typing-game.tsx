@@ -65,6 +65,11 @@ const TypingGame = () => {
         }
     };
 
+    const handleGoBack = () => {
+        setFinished(false);
+        reset();
+    };
+
     const handlePersonalBest = (wpm: number, accuracy: number): ResultsType => {
         if (personalBest === 0) {
             updatePersonalBest(wpm);
@@ -109,7 +114,7 @@ const TypingGame = () => {
                 type={personalBestType}
                 totalCorrectChars={typed.length}
                 totalErrorsChars={totalErrors}
-                setFinished={setFinished}
+                handleGoBack={handleGoBack}
             />
         );
     } else {
