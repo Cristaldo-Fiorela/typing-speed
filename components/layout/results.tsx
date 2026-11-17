@@ -4,7 +4,13 @@ import { RESULTS_INFO } from "@/lib/constants";
 import { ResultsProps } from "@/types/component-types";
 import Image from "next/image";
 
-const Results = ({ WPM, accuracy, type, counter }: ResultsProps) => {
+const Results = ({
+    WPM,
+    accuracy,
+    type,
+    counter,
+    setFinished,
+}: ResultsProps) => {
     return (
         <main className="flex flex-col flex-1 items-center justify-center gap-8">
             <section className="flex flex-col items-center gap-8">
@@ -57,6 +63,7 @@ const Results = ({ WPM, accuracy, type, counter }: ResultsProps) => {
             <SquareButton
                 fill
                 className="bg-neutral-200 border-neutral-200 text-neutral-900 font-bold hover:bg-neutral-50"
+                onClick={() => setFinished(false)}
             >
                 <span className="flex items-center gap-2">
                     {" "}

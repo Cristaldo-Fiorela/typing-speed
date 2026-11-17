@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from "react";
 import { DifficultyLevel, ModeType, ResultsType, Sentence } from "./types";
 
 export type ScoreBarProps = {
@@ -34,4 +35,5 @@ export type ResultsProps = {
   accuracy: number;
   counter: string;
   type: ResultsType;
+  setFinished: Dispatch<SetStateAction<boolean>>;
 }

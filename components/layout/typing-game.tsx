@@ -108,6 +108,7 @@ const TypingGame = () => {
                 accuracy={ACCURACY}
                 counter={formatted}
                 type={personalBestType}
+                setFinished={setFinished}
             />
         );
     } else {
