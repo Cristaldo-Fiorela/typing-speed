@@ -22,7 +22,7 @@ export default function Header() {
                         width={34}
                         height={34}
                     />
-                    <div className="flex flex-col">
+                    <div className="hidden md:flex md:flex-col">
                         <h1 className="font-bold text-lg">Typing Speed Test</h1>
                         <small className="text-neutral-400">
                             Type as fast as you can in 60 seconds
@@ -38,7 +38,10 @@ export default function Header() {
                         height={16}
                     />
                     <h2 className="text-neutral-400">
-                        Personal best:{" "}
+                        <span className="hidden md:inline">
+                            Personal best:{" "}
+                        </span>
+                        <span className="md:hidden">Best: </span>
                         <span className="text-neutral-50">
                             {personalBest} WPM
                         </span>
